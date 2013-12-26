@@ -105,18 +105,22 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // ---------------------------------------------------------
 
-// print HTML
 $pdf->PrintLetter('LOREM IPSUM [HTML]', '../data/staging', true);
 
 // ---------------------------------------------------------
 
-$pdfFile = "letter.pdf";
+$pdfFile = "../data/letters/letter_" . date('Y-m-d\TH-i-i\Z') . ".pdf";
 
 //Close and output PDF document
 // 'I' = inline 'F' = save to file
 $pdf->Output($pdfFile, 'F');
 
 print "Saved to {$pdfFile}\n";
+
+// ---------------------------------------------------------
+
+// Move our completed emails out of staging
+shell_exec('mv ../data/staging/*.html ../data/completed');
 
 //============================================================+
 // END OF FILE

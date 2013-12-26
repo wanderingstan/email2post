@@ -11,7 +11,7 @@ $out .= "<!--BEGIN EMAIL-->\n";
 $out .= $_POST['stripped-html'];
 $out .= "\n<!--END EMAIL-->\n";
 
-$filename = '../data/staging/' . date('Y-m-dTH-i-iZ') . '.html';
+$filename = '../data/staging/' . date('Y-m-d\TH-i-i\Z' . '.html';
 
 // TODO: save images, add to html
 
