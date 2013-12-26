@@ -2,7 +2,7 @@
 // TODO: remove insecure from curl!
 // 	public $pdf_file = '../data/letters/letter_2013-12-26MST11-08-08-25200.pdf';
 
-include_once "../config.php";
+require_once "../config.php";
 
 class lob_mail_letter 
 {

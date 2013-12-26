@@ -1,6 +1,6 @@
 <?php
 // CGI handler that is called by mailgun when a new email is received
-include_once "../config.php";
+require_once "../config.php";
 
 $mailbox = $_GET['mailbox'];
 
