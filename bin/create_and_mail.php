@@ -9,17 +9,17 @@ $jobName = date('Y-m-d\TH-i-i\Z') . "_Pete";
 $pdfFile = "../data/letters/letter_" . $jobName . ".pdf";
 
 try {
-	// Create the letter 
+	// Create the letter
 	create_letter_from_emails($pdfFile, FALSE);
 
-	// print "PDF created. Visible at " . $config['BASE_URL'] . '/' . 
+	print "PDF created. Visible at " . $pdfFile . '.';
 
-	// Mail the letter!
-	$lob = new lob_mail_letter($pdfFile, $jobName);
-
-	$lob->mail_letter();
-
-	print_r($result);
+//	// Mail the letter!
+//	$lob = new lob_mail_letter($pdfFile, $jobName);
+//
+//	$lob->mail_letter();
+//
+//	print_r($result);
 
 }
 catch (noEmailsStagedException $e) {
