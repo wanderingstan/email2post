@@ -2,6 +2,7 @@
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
 require_once "../config.php";
+include_once "setup.php"
 
 class noEmailsStagedException extends Exception
 {

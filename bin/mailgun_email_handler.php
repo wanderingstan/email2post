@@ -2,6 +2,7 @@
 // CGI handler that is called by mailgun when a new email is received
 require_once "../config.php";
 require_once "create_letter.php";
+include_once "setup.php"
 
 $mailbox = $_GET['mailbox'];
 
