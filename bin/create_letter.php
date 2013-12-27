@@ -1,6 +1,7 @@
 <?php
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
+require_once "../config.php";
 
 class noEmailsStagedException extends Exception
 {
@@ -40,8 +41,9 @@ class MC_TCPDF extends TCPDF {
 	public function LetterBody($content_dir, $mode=false) {
 		$this->selectColumn();
 
-		// get all emails 
+		// get all emails
 		$content='';
+		printf ("REading from " . $content_dir . "\n");
 		if ($handle = opendir($content_dir)) {
 		    while (false !== ($entry = readdir($handle))) {
 		    	if (substr($entry, -strlen('.html')) === '.html') {
@@ -77,6 +79,8 @@ class MC_TCPDF extends TCPDF {
 
 
 function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
+
+    global $config;
 
 	// create new PDF document
 	$pdf = new MC_TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -134,7 +138,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
 	if ($clearStaging) {
 		// Move our completed emails out of staging
 		shell_exec('mv ' . $config['STAGING_DIR'] . '/*.html ../data/completed/');
-	}		
+	}
 
 	return 1;
 }
