@@ -10,16 +10,13 @@ $pdfFile = "../data/letters/letter_" . $jobName . ".pdf";
 
 try {
 	// Create the letter
-	create_letter_from_emails($pdfFile, FALSE);
+	create_letter_from_emails($pdfFile, FALSE); // for now we don't clear...
+	print "PDF created at " . $pdfFile . "\n";
 
-	print "PDF created. Visible at " . $pdfFile . '.';
-
-//	// Mail the letter!
-//	$lob = new lob_mail_letter($pdfFile, $jobName);
-//
-//	$lob->mail_letter();
-//
-//	print_r($result);
+	// Mail the letter!
+	$lob = new lob_mail_letter($pdfFile, $jobName);
+	$lob->mail_letter();
+	print_r($result);
 
 }
 catch (noEmailsStagedException $e) {

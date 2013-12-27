@@ -1,6 +1,7 @@
 <?php
 // CGI handler that is called by mailgun when a new email is received
 require_once "../config.php";
+require_once "create_letter.php";
 
 $mailbox = $_GET['mailbox'];
 
@@ -50,5 +51,8 @@ file_put_contents($filename, $out);
 file_put_contents($config['LOG_FILE'], "\n---\n" . $log . "\n\n" . print_r ($_POST, TRUE), FILE_APPEND | LOCK_EX);
 
 file_put_contents($config['LOG_DIR'] . "/most_recent_post.serialized",serialize($_POST));
+
+// Create latest rev of pdf
+create_letter_from_emails($config['STAGING_DIR'] . '/' . 'latest.pdf', FALSE);
 
 ?>
