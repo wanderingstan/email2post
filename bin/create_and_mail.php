@@ -12,7 +12,7 @@ try {
 	// Create the letter
 	create_letter_from_emails($pdfFile, FALSE);
 
-	print "PDF created. Visible at " . $pdfFile . '.';
+	print "PDF created. Visible at " . $pdfFile . ".\n";
 
 //	// Mail the letter!
 //	$lob = new lob_mail_letter($pdfFile, $jobName);

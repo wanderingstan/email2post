@@ -1,0 +1,212 @@
+a:38:{s:12:"Content-Type";s:56:"multipart/mixed; boundary="089e0149416475266104ee792d7f"";s:4:"Date";s:31:"Thu, 26 Dec 2013 17:28:26 -0700";s:4:"From";s:35:"Stan James <stan@wanderingstan.com>";s:11:"In-Reply-To";s:68:"<CAG4wrmBbiWZVettqo9r7Bm1PoNQBT-0d=CxacRn82mynj7PB=g@mail.gmail.com>";s:10:"Message-Id";s:68:"<CAG4wrmDCHTQ0jXirrd4SJ62e-GxJ+k0S4PYKBLAg19nkLysY9Q@mail.gmail.com>";s:12:"Mime-Version";s:3:"1.0";s:8:"Received";s:65:"by 10.114.11.200 with HTTP; Thu, 26 Dec 2013 16:28:26 -0800 (PST)";s:10:"References";s:137:"<CAG4wrmCWUt_5vYujMZm6E3NH28OepMo=uhHHvigMygkvxzEJwQ@mail.gmail.com> <CAG4wrmBbiWZVettqo9r7Bm1PoNQBT-0d=CxacRn82mynj7PB=g@mail.gmail.com>";s:7:"Subject";s:26:"Fwd: This is a test again.";s:2:"To";s:31:"peter@wanderingstan.mailgun.org";s:11:"X-Antiabuse";s:41:"Sender Address Domain - wanderingstan.com";s:12:"X-Bwhitelist";s:2:"no";s:13:"X-Email-Count";s:1:"5";s:15:"X-Envelope-From";s:24:"<stan@wanderingstan.com>";s:23:"X-Google-Dkim-Signature";s:548:"v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=mime-version:in-reply-to:references:from:date:message-id:subject:to :content-type; bh=FdX5MDz6ZnZR/3YzDcqmmLdwNuXHcetxBNbPx6wirow=; b=jEvEsoM/sHzdv0kapUNhpG+pQ6P/Fkk+qhOoM3pZlEq5LAWBf2iF0rUw2877m1Hm67 rvl4lQINS9grv4744dG2J12C8h7eDPfUl0GuVGg5t+dIVrVhiYy17lUw6DCQUsN9LI/6 /89b3yimq8+87tMFbRRLWroeZBx8l8p0VDizBf+8lMEzoAp4HICGtCH5V+en25IQZVcx iGN3EkxiYNNePURu9tq/4K97/Yyg4mkYRU1LhluAo7/YkaGtBlq6dmbfK0hScv3yPfw7 laGCrTyA5tBZwzhZWK2mmYI94F8LZVoNTff7IbILHx6Zzj3mWiwzBidWKHsg+OZqe6RV vfDg==";s:18:"X-Mailgun-Incoming";s:3:"Yes";s:10:"X-Received";s:100:"by 10.152.21.74 with SMTP id t10mr1335929lae.65.1388104127941; Thu, 26 Dec 2013 16:28:47 -0800 (PST)";s:8:"X-Source";s:0:"";s:13:"X-Source-Args";s:0:"";s:13:"X-Source-Auth";s:22:"stan@wanderingstan.com";s:12:"X-Source-Cap";s:56:"d2FuZGVyaW47d2FuZGVyaW47Z2F0b3I0MDU5Lmhvc3RnYXRvci5jb20=";s:12:"X-Source-Dir";s:0:"";s:11:"X-Source-Ip";s:14:"209.85.217.179";s:15:"X-Source-Sender";s:49:"(mail-lb0-f179.google.com) [209.85.217.179]:37851";s:16:"attachment-count";s:1:"1";s:9:"body-html";s:6737:"<div dir="ltr"><br><br><div class="gmail_quote">---------- Forwarded message ----------<br>From: <b class="gmail_sendername">Stan James</b> <span dir="ltr">&lt;<a href="mailto:stan@wanderingstan.com">stan@wanderingstan.com</a>&gt;</span><br>
+
+Date: Thu, Dec 26, 2013 at 5:09 PM<br>Subject: Fwd: This is a test again.<br>To: <a href="mailto:peter@wanderingstan.mailgun.org">peter@wanderingstan.mailgun.org</a><br><br><br><div dir="ltr"><br><br><div class="gmail_quote">
+
+<div class="im">---------- Forwarded message ----------<br>From: <b class="gmail_sendername">Stan James</b> <span dir="ltr">&lt;<a href="mailto:stan@wanderingstan.com" target="_blank">stan@wanderingstan.com</a>&gt;</span><br>
+
+
+Date: Thu, Dec 26, 2013 at 4:30 PM<br>Subject: This is a test again.<br>To: <a href="mailto:peter@wanderingstan.mailgun.org" target="_blank">peter@wanderingstan.mailgun.org</a><br><br><br></div><div><div class="h5"><div dir="ltr">
+
+Sending a lto of stuff. <div><br></div>
+<div><div>One apparent oddity in this description is that although each output has a Bitcoin value associated to it, the inputs do not. Of course, the values of the respective inputs can be found by consulting the corresponding outputs in earlier transactions. In a standard Bitcoin transaction, the sum of all the inputs in the transaction must be at least as much as the sum of all the outputs. (The only exception to this principle is the Genesis block, and in coinbase transactions, both of which add to the overall Bitcoin supply.) If the inputs sum up to more than the outputs, then the excess is used as a transaction fee. This is paid to whichever miner successfully validates the block which the current transaction is a part of.</div>
+
+
+
+<div><br></div><div>Now I&quot;m going to copy and paste some html stuff. </div><div><br></div><div><p style="margin:0px 0px 10px;padding:0px;border:0px;outline:0px;font-size:12.800000190734863px;vertical-align:baseline;background-color:rgb(249,247,245);color:rgb(68,68,68);font-family:Arial,Helvetica,sans-serif;line-height:22px">
+
+
+
+Lines 12 through 15 define the second input, with a similar format to lines 8 through 11. And lines 16 through 19 define the third input.</p><p style="margin:0px 0px 10px;padding:0px;border:0px;outline:0px;font-size:12.800000190734863px;vertical-align:baseline;background-color:rgb(249,247,245);color:rgb(68,68,68);font-family:Arial,Helvetica,sans-serif;line-height:22px">
+
+
+
+Lines 20 through 24 define a list containing the two outputs from the transaction.</p><p style="margin:0px 0px 10px;padding:0px;border:0px;outline:0px;font-size:12.800000190734863px;vertical-align:baseline;background-color:rgb(249,247,245);color:rgb(68,68,68);font-family:Arial,Helvetica,sans-serif;line-height:22px">
+
+
+
+The first output is defined in lines 21 and 22. Line 21 tells us the value of the output, 0.01068000 bitcoins. As before, line 22 is an expression in Bitcoin’s scripting language. The main thing to take away here is that the string <tt style="margin:0px;padding:0px;border:0px;outline:0px;font-size:10.399999618530273px;vertical-align:baseline;background-color:transparent">e8c30622...</tt> is the Bitcoin address of the intended recipient of the funds.</p>
+
+
+
+</div><div><br></div><div><br></div><div><span><font color="#888888">
+</font></span><table border="1" style="border-spacing:0px;width:767px;margin:0px 0px 40px;border:1px solid rgb(221,221,221);border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;color:rgb(98,98,98);font-family:&#39;Open Sans&#39;,&#39;Helvetica Neue&#39;,Helvetica,Arial,&#39;Lucida Grande&#39;,sans-serif;font-size:18px;line-height:28.799999237060547px">
+
+
+
+<tbody valign="top"><tr><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238);background-color:rgb(250,250,250)">o:dkim</td><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238);background-color:rgb(250,250,250)">
+
+
+
+Enables/disables DKIM signatures on per-message basis. Pass <tt><span>yes</span></tt>or <tt><span>no</span></tt></td></tr><tr><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238)">
+
+
+
+o:deliverytime</td><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238)">Desired time of delivery. See <a href="http://documentation.mailgun.com/api-intro.html#date-format" style="color:rgb(54,76,117)" target="_blank"><em>Date Format</em></a>. Note: Messages can be scheduled for a maximum of 3 days in the future.</td>
+
+
+
+</tr><tr><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238);background-color:rgb(250,250,250)">o:testmode</td><td style="padding:10px;border-style:none none solid;border-bottom-width:1px;border-bottom-color:rgb(238,238,238);background-color:rgb(250,250,250)">
+
+
+
+Enables sending in test mode. Pass <tt><span>yes</span></tt> if needed. See <a href="http://documentation.mailgun.com/user_manual.html#manual-testmode" style="color:rgb(54,76,117)" target="_blank"><em>Sending in Test Mode</em></a></td>
+
+
+</tr></tbody></table></div><span><font color="#888888"><div><br></div><div><br clear="all"><div><br></div>-- <br><div dir="ltr"><a href="http://wanderingstan.com" target="_blank">wanderingstan.com</a> / <a href="http://instagram.com/wanderingstan" target="_blank">art</a> / <a href="https://www.facebook.com/wanderingstan" target="_blank">fb</a> / <a href="http://twitter.com/wanderingstan" target="_blank">tw</a> / <a href="tel:917-575-2435" value="+19175752435" target="_blank">917-575-2435</a></div>
+
+
+
+
+</div></font></span></div></div>
+</div></div></div><div><div class="h5"><br><br clear="all"><div><br></div>-- <br><div dir="ltr"><a href="http://wanderingstan.com" target="_blank">wanderingstan.com</a> / <a href="http://instagram.com/wanderingstan" target="_blank">art</a> / <a href="https://www.facebook.com/wanderingstan" target="_blank">fb</a> / <a href="http://twitter.com/wanderingstan" target="_blank">tw</a> / <a href="tel:917-575-2435" value="+19175752435" target="_blank">917-575-2435</a></div>
+
+
+
+</div></div></div>
+</div><br><br clear="all"><div><br></div>-- <br><div dir="ltr"><a href="http://wanderingstan.com" target="_blank">wanderingstan.com</a> / <a href="http://instagram.com/wanderingstan" target="_blank">art</a> / <a href="https://www.facebook.com/wanderingstan" target="_blank">fb</a> / <a href="http://twitter.com/wanderingstan" target="_blank">tw</a> / 917-575-2435</div>
+
+
+</div>
+";s:10:"body-plain";s:2719:"---------- Forwarded message ----------
+From: Stan James <stan@wanderingstan.com>
+Date: Thu, Dec 26, 2013 at 5:09 PM
+Subject: Fwd: This is a test again.
+To: peter@wanderingstan.mailgun.org
+
+
+
+
+---------- Forwarded message ----------
+From: Stan James <stan@wanderingstan.com>
+Date: Thu, Dec 26, 2013 at 4:30 PM
+Subject: This is a test again.
+To: peter@wanderingstan.mailgun.org
+
+
+Sending a lto of stuff.
+
+One apparent oddity in this description is that although each output has a
+Bitcoin value associated to it, the inputs do not. Of course, the values of
+the respective inputs can be found by consulting the corresponding outputs
+in earlier transactions. In a standard Bitcoin transaction, the sum of all
+the inputs in the transaction must be at least as much as the sum of all
+the outputs. (The only exception to this principle is the Genesis block,
+and in coinbase transactions, both of which add to the overall Bitcoin
+supply.) If the inputs sum up to more than the outputs, then the excess is
+used as a transaction fee. This is paid to whichever miner successfully
+validates the block which the current transaction is a part of.
+
+Now I"m going to copy and paste some html stuff.
+
+Lines 12 through 15 define the second input, with a similar format to lines
+8 through 11. And lines 16 through 19 define the third input.
+
+Lines 20 through 24 define a list containing the two outputs from the
+transaction.
+
+The first output is defined in lines 21 and 22. Line 21 tells us the value
+of the output, 0.01068000 bitcoins. As before, line 22 is an expression in
+Bitcoin’s scripting language. The main thing to take away here is that the
+string e8c30622... is the Bitcoin address of the intended recipient of the
+funds.
+
+
+ o:dkim Enables/disables DKIM signatures on per-message basis. Pass
+yesor noo:deliverytimeDesired
+time of delivery. See *Date
+Format*<http://documentation.mailgun.com/api-intro.html#date-format>.
+Note: Messages can be scheduled for a maximum of 3 days in the future.
+o:testmode Enables sending in test mode. Pass yes if needed. See *Sending
+in Test Mode*<http://documentation.mailgun.com/user_manual.html#manual-testmode>
+
+
+
+-- 
+wanderingstan.com / art <http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan> / 917-575-2435
+
+
+
+-- 
+wanderingstan.com / art <http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan> / 917-575-2435
+
+
+
+-- 
+wanderingstan.com / art <http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan> / 917-575-2435
+";s:4:"from";s:35:"Stan James <stan@wanderingstan.com>";s:15:"message-headers";s:3285:"[["Received", "by luna.mailgun.net with SMTP mgrt 8781392284689; Fri, 27 Dec 2013 00:28:54 +0000"], ["X-Envelope-From", "<stan@wanderingstan.com>"], ["Received", "from gateway01.websitewelcome.com (gateway01.websitewelcome.com [69.93.106.19]) by mxa.mailgun.org with ESMTP id 52bcc9c4.7f53a83b9348-in2; Fri, 27 Dec 2013 00:28:52 -0000 (UTC)"], ["Received", "by gateway01.websitewelcome.com (Postfix, from userid 5007)\tid B9886E8581EDF; Thu, 26 Dec 2013 18:28:51 -0600 (CST)"], ["Received", "from gator4059.hostgator.com (gator4059.hostgator.com [192.185.4.70])\tby gateway01.websitewelcome.com (Postfix) with ESMTP id 04A92E8581E40\tfor <peter@wanderingstan.mailgun.org>; Thu, 26 Dec 2013 18:28:51 -0600 (CST)"], ["Received", "from [209.85.217.179] (port=37851 helo=mail-lb0-f179.google.com)\tby gator4059.hostgator.com with esmtpsa (TLSv1:RC4-SHA:128)\t(Exim 4.80)\t(envelope-from <stan@wanderingstan.com>)\tid 1VwLIH-0002k2-Om\tfor peter@wanderingstan.mailgun.org; Thu, 26 Dec 2013 18:28:50 -0600"], ["Received", "by mail-lb0-f179.google.com with SMTP id w7so4023403lbi.10 for <peter@wanderingstan.mailgun.org>; Thu, 26 Dec 2013 16:28:47 -0800 (PST)"], ["X-Google-Dkim-Signature", "v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=mime-version:in-reply-to:references:from:date:message-id:subject:to :content-type; bh=FdX5MDz6ZnZR/3YzDcqmmLdwNuXHcetxBNbPx6wirow=; b=jEvEsoM/sHzdv0kapUNhpG+pQ6P/Fkk+qhOoM3pZlEq5LAWBf2iF0rUw2877m1Hm67 rvl4lQINS9grv4744dG2J12C8h7eDPfUl0GuVGg5t+dIVrVhiYy17lUw6DCQUsN9LI/6 /89b3yimq8+87tMFbRRLWroeZBx8l8p0VDizBf+8lMEzoAp4HICGtCH5V+en25IQZVcx iGN3EkxiYNNePURu9tq/4K97/Yyg4mkYRU1LhluAo7/YkaGtBlq6dmbfK0hScv3yPfw7 laGCrTyA5tBZwzhZWK2mmYI94F8LZVoNTff7IbILHx6Zzj3mWiwzBidWKHsg+OZqe6RV vfDg=="], ["X-Received", "by 10.152.21.74 with SMTP id t10mr1335929lae.65.1388104127941; Thu, 26 Dec 2013 16:28:47 -0800 (PST)"], ["Mime-Version", "1.0"], ["Received", "by 10.114.11.200 with HTTP; Thu, 26 Dec 2013 16:28:26 -0800 (PST)"], ["In-Reply-To", "<CAG4wrmBbiWZVettqo9r7Bm1PoNQBT-0d=CxacRn82mynj7PB=g@mail.gmail.com>"], ["References", "<CAG4wrmCWUt_5vYujMZm6E3NH28OepMo=uhHHvigMygkvxzEJwQ@mail.gmail.com> <CAG4wrmBbiWZVettqo9r7Bm1PoNQBT-0d=CxacRn82mynj7PB=g@mail.gmail.com>"], ["From", "Stan James <stan@wanderingstan.com>"], ["Date", "Thu, 26 Dec 2013 17:28:26 -0700"], ["Message-Id", "<CAG4wrmDCHTQ0jXirrd4SJ62e-GxJ+k0S4PYKBLAg19nkLysY9Q@mail.gmail.com>"], ["Subject", "Fwd: This is a test again."], ["To", "peter@wanderingstan.mailgun.org"], ["Content-Type", "multipart/mixed; boundary=\"089e0149416475266104ee792d7f\""], ["X-Antiabuse", "This header was added to track abuse, please include it with any abuse report"], ["X-Antiabuse", "Primary Hostname - gator4059.hostgator.com"], ["X-Antiabuse", "Original Domain - wanderingstan.mailgun.org"], ["X-Antiabuse", "Originator/Caller UID/GID - [47 12] / [47 12]"], ["X-Antiabuse", "Sender Address Domain - wanderingstan.com"], ["X-Bwhitelist", "no"], ["X-Source-Ip", "209.85.217.179"], ["X-Source", ""], ["X-Source-Args", ""], ["X-Source-Dir", ""], ["X-Source-Sender", "(mail-lb0-f179.google.com) [209.85.217.179]:37851"], ["X-Source-Auth", "stan@wanderingstan.com"], ["X-Email-Count", "5"], ["X-Source-Cap", "d2FuZGVyaW47d2FuZGVyaW47Z2F0b3I0MDU5Lmhvc3RnYXRvci5jb20="], ["X-Mailgun-Incoming", "Yes"]]";s:9:"recipient";s:31:"peter@wanderingstan.mailgun.org";s:6:"sender";s:22:"stan@wanderingstan.com";s:9:"signature";s:64:"d1c05470eeb717f4f71149194681181cbbbf5c53f554d9542eee1f3e8d05d354";s:13:"stripped-html";s:444:"<html><body><div dir="ltr"><br><br><br><br clear="all"><div><br></div>-- <br><div dir="ltr"><a href="http://wanderingstan.com" target="_blank">wanderingstan.com</a> / <a href="http://instagram.com/wanderingstan" target="_blank">art</a>&#160;/&#160;<a href="https://www.facebook.com/wanderingstan" target="_blank">fb</a>&#160;/&#160;<a href="http://twitter.com/wanderingstan" target="_blank">tw</a> / 917-575-2435</div>
+
+
+</div></body></html>";s:18:"stripped-signature";s:347:"-- 
+wanderingstan.com / art @@http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan@@ / 917-575-2435
+
+
+
+-- 
+wanderingstan.com / art @@http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan> / 917-575-2435";s:13:"stripped-text";s:2370:"---------- Forwarded message ----------
+From: Stan James <stan@wanderingstan.com>
+Date: Thu, Dec 26, 2013 at 5:09 PM
+Subject: Fwd: This is a test again.
+To: peter@wanderingstan.mailgun.org
+
+
+
+
+---------- Forwarded message ----------
+From: Stan James <stan@wanderingstan.com>
+Date: Thu, Dec 26, 2013 at 4:30 PM
+Subject: This is a test again.
+To: peter@wanderingstan.mailgun.org
+
+
+Sending a lto of stuff.
+
+One apparent oddity in this description is that although each output has a
+Bitcoin value associated to it, the inputs do not. Of course, the values of
+the respective inputs can be found by consulting the corresponding outputs
+in earlier transactions. In a standard Bitcoin transaction, the sum of all
+the inputs in the transaction must be at least as much as the sum of all
+the outputs. (The only exception to this principle is the Genesis block,
+and in coinbase transactions, both of which add to the overall Bitcoin
+supply.) If the inputs sum up to more than the outputs, then the excess is
+used as a transaction fee. This is paid to whichever miner successfully
+validates the block which the current transaction is a part of.
+
+Now I"m going to copy and paste some html stuff.
+
+Lines 12 through 15 define the second input, with a similar format to lines
+8 through 11. And lines 16 through 19 define the third input.
+
+Lines 20 through 24 define a list containing the two outputs from the
+transaction.
+
+The first output is defined in lines 21 and 22. Line 21 tells us the value
+of the output, 0.01068000 bitcoins. As before, line 22 is an expression in
+Bitcoin’s scripting language. The main thing to take away here is that the
+string e8c30622... is the Bitcoin address of the intended recipient of the
+funds.
+
+
+ o:dkim Enables/disables DKIM signatures on per-message basis. Pass
+yesor noo:deliverytimeDesired
+time of delivery. See *Date
+Format*<http://documentation.mailgun.com/api-intro.html#date-format@@.
+Note: Messages can be scheduled for a maximum of 3 days in the future.
+o:testmode Enables sending in test mode. Pass yes if needed. See *Sending
+in Test Mode*@@http://documentation.mailgun.com/user_manual.html#manual-testmode@@
+
+
+
+-- 
+wanderingstan.com / art @@http://instagram.com/wanderingstan> /
+fb<https://www.facebook.com/wanderingstan>
+ / tw <http://twitter.com/wanderingstan@@ / 917-575-2435";s:7:"subject";s:26:"Fwd: This is a test again.";s:9:"timestamp";s:10:"1388104134";s:5:"token";s:50:"9om3eqs667sgb4-rw8qb-y6jtuxlxkfqmlqszqtuaiqr48z1w7";}

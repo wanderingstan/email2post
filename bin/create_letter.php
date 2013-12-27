@@ -18,19 +18,51 @@ class MC_TCPDF extends TCPDF {
 	/**
 	 * Print chapter
 	 * @param $content_dir (string) name of the directory containing emails and images to include
-	 * @param $mode (boolean) if true the chapter body is in HTML, otherwise in simple text.
+	 * @param $isHTML (boolean) if true the chapter body is in HTML, otherwise in simple text.
 	 * @public
 	 */
-	public function PrintLetter($content_dir, $mode=true) {
+	public function PrintLetter($content_dir, $isHTML=true) {
 		// add a new page
 		$this->AddPage();
 		// disable existing columns
 		$this->resetColumns();
 		// set columns
-		$this->setEqualColumns(2, 86);
+		$this->setEqualColumns(2, 90);
 		// print body
-		return $this->LetterBody($content_dir, $mode);
+		return $this->LetterBody($content_dir, $isHTML);
 	}
+
+    /**
+     * Take mailgun POST data and format our message.
+     */
+    public function messageFromSerialized($serializedFilename, $isHTML) {
+        $postData = unserialize(file_get_contents($serializedFilename));
+        if ($isHTML) {
+            $from = htmlentities($postData['From']);
+            $subject = htmlentities($postData['Subject']);
+
+            $out .= "<hr><p>\n";
+            $out .= "From: <b>{$from}<b><br>\n";
+            $out .= "Date: <b>{$postData['Date']}</b><br>\n";
+            // $out .= "To: <b>{$postData['To']}</b><br>\n";
+            $out .= "Subject: <b>{$subject}<b><br>\n";
+            $out .= "</p>\n";
+            $out .= "<!--BEGIN EMAIL-->\n";
+            //$out .= $postData['stripped-html'];
+            $out .= $postData['body-html'];
+            $out .= "<p></p>\n<!--END EMAIL-->\n";
+        }
+        else {
+            $out .= "From: {$postData['From']}\n";
+            $out .= "Date: {$postData['Date']}\n";
+            $out .= "Subject: {$postData['Subject']}\n";
+            $body = preg_replace('/\r\n/',"\n", $postData['body-plain']);
+            $body = preg_replace('/([^\n])\n([^\n])/s','\1 \2', $body);
+            $out .= $body;
+            $out .= "\n-------------------------------------------------\n";
+        }
+        return $out;
+    }
 
 	/**
 	 * Print body
@@ -38,27 +70,25 @@ class MC_TCPDF extends TCPDF {
 	 * @param $mode (boolean) if true the chapter body is in HTML, otherwise in simple text.
 	 * @public
 	 */
-	public function LetterBody($content_dir, $mode=false) {
+	public function LetterBody($content_dir, $isHTML=false) {
 		$this->selectColumn();
 
 		// get all emails
 		$content='';
-		$files = array();
-		printf ("REading from " . $content_dir . "\n");
 		if ($handle = opendir($content_dir)) {
+		    $extension = '.serialized';
 		    while (false !== ($entry = readdir($handle))) {
-		    	if (substr($entry, -strlen('.html')) === '.html') {
-		    		array_push($files, $entry);
+		    	if (substr($entry, -strlen($extension)) === $extension) {
+		            echo "Included file: " . $entry . "\n";
+					//$content .= file_get_contents($content_dir . '/' . $entry, false);
+					$content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
+		        }
+		        else {
+		            echo "Skipping file: " . $entry . "\n";
 		        }
 		    }
 		    closedir($handle);
 		}
-		sort($files);
-		foreach ($files as $entry) {
-	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
-			$content .= file_get_contents($content_dir . '/' . $entry, false);
-		}
-
 
 		if ($content == '') {
 			// There were no emails
@@ -69,7 +99,7 @@ class MC_TCPDF extends TCPDF {
 		$this->SetFont('times', '', 9);
 		$this->SetTextColor(50, 50, 50);
 		// print content
-		if ($mode) {
+		if ($isHTML) {
 			// ------ HTML MODE ------
 			$this->writeHTML($content, true, false, true, false, 'J');
 		} else {
@@ -99,7 +129,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
 	// $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 	// set default header data
-	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 010', PDF_HEADER_STRING);
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "Pony Tales", PDF_HEADER_STRING);
 
 	// set header and footer fonts
 	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -127,11 +157,11 @@ function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
 
 	// ---------------------------------------------------------
 
-	$pdf->PrintLetter($config['STAGING_DIR'], true);
+	$pdf->PrintLetter($config['STAGING_DIR'], false);
 
-	if ($pdf->getNumPages() > 8) {
-		throw new tooManyPagesException;
-	}
+//	if ($pdf->getNumPages() > 8) {
+//		throw new tooManyPagesException;
+//	}
 
 	//Close and output PDF document
 	// 'I' = inline 'F' = save to file

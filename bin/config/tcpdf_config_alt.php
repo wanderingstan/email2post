@@ -74,7 +74,7 @@ define ('PDF_HEADER_LOGO', 'tcpdf_logo.jpg');
 /**
  * Header logo image width in user units.
  */
-define ('PDF_HEADER_LOGO_WIDTH', 30);
+define ('PDF_HEADER_LOGO_WIDTH', 14);
 
 /**
  * Cache directory for temporary files (full path).
@@ -107,14 +107,9 @@ define ('PDF_CREATOR', 'TCPDF');
 define ('PDF_AUTHOR', 'TCPDF');
 
 /**
- * Header title.
- */
-define ('PDF_HEADER_TITLE', 'TCPDF Example');
-
-/**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "For Peter James");
+define ('PDF_HEADER_STRING', "");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].
@@ -124,7 +119,7 @@ define ('PDF_UNIT', 'mm');
 /**
  * Header margin.
  */
-define ('PDF_MARGIN_HEADER', 5);
+define ('PDF_MARGIN_HEADER', 10);
 
 /**
  * Footer margin.
