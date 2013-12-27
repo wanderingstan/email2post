@@ -4,7 +4,7 @@
 
 require_once "../config.php";
 
-class lob_mail_letter 
+class lob_mail_letter
 {
 	public $lob_object;
 	public $lob_job;
@@ -18,7 +18,7 @@ class lob_mail_letter
 	}
 
 	public function mail_letter() {
-		global $config; 
+		global $config;
 
 		$lob_object_cmd = <<<EOF
 			curl --insecure https://api.lob.com/v1/objects \
@@ -26,6 +26,7 @@ class lob_mail_letter
 			-F "name={$this->letter_pdf_file}" \
 			-F "file=@{$this->letter_pdf_file}" \
 			-F "setting_id={$config['LOB_SETTING_ID']}" \
+
 EOF;
 		// print ($lob_object_json);
 
@@ -36,7 +37,7 @@ EOF;
 		$this->lob_object = json_decode($lob_object_json);
 		print_r($this->lob_object);
 
-		// file_put_contents($config['log_file'], print_r ($this->lob_object, TRUE), FILE_APPEND | LOCK_EX);		
+		// file_put_contents($config['log_file'], print_r ($this->lob_object, TRUE), FILE_APPEND | LOCK_EX);
 
 		if (!$this->lob_object->id) {
 			throw new Exception('Problem creating lob object.');
@@ -50,6 +51,7 @@ EOF;
 			-d "to={$config['LOB_TO_ADDRESS_ID']}" \
 			-d "from={$config['LOB_FROM_ADDRESS_ID']}" \
 			-d "object1={$this->lob_object->id}" \
+
 EOF;
 
 		print "create_lob_job_cmd:\n";
@@ -60,7 +62,7 @@ EOF;
 
 		print_r ($this->lob_job);
 
-		// file_put_contents($config['log_file'], print_r ($this->lob_job, TRUE), FILE_APPEND | LOCK_EX);		
+		// file_put_contents($config['log_file'], print_r ($this->lob_job, TRUE), FILE_APPEND | LOCK_EX);
 	}
 
 }
