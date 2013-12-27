@@ -4,10 +4,13 @@ require_once "../config.php";
 
 $mailbox = $_GET['mailbox'];
 
+$from = htmlentities($_POST['From']);
+$subject = htmlentities($_POST['Subject']);
+
 $out .= "<hr><p>\n";
-$out .= "From: <b>{$_POST['From']}<b> on {$_POST['Date']}<br>\n";
+$out .= "From: <b>{$from}<b> on {$_POST['Date']}<br>\n";
 // $out .= "To: {$_POST['To']}<br>\n";
-$out .= "Subject: <b>{$_POST['Subject']}<b><br>\n";
+$out .= "Subject: <b>{$subject}<b><br>\n";
 $out .= "</p>\n";
 $out .= "<!--BEGIN EMAIL-->\n";
 $out .= $_POST['stripped-html'];
