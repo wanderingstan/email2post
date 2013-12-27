@@ -89,8 +89,13 @@ class MC_TCPDF extends TCPDF {
 		    }
 		    closedir($handle);
 		}
+		sort($files);
+		foreach ($files as $entry) {
+	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
+			$content .= file_get_contents($content_dir . '/' . $entry, false);
+		}
 
-		if ($content == '') {
+		if (count($files) == 0) {
 			// There were no emails
 			throw new noEmailsStagedException;
 		}
@@ -114,7 +119,7 @@ class MC_TCPDF extends TCPDF {
 
 
 
-function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
+function create_letter_from_emails($pdfFile, $clearStaging = FALSE) {
 
     global $config;
 
