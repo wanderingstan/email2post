@@ -43,16 +43,22 @@ class MC_TCPDF extends TCPDF {
 
 		// get all emails
 		$content='';
+		$files = array();
 		printf ("REading from " . $content_dir . "\n");
 		if ($handle = opendir($content_dir)) {
 		    while (false !== ($entry = readdir($handle))) {
 		    	if (substr($entry, -strlen('.html')) === '.html') {
-		            echo "Included file: " . $content_dir . '/' . $entry . "\n";
-					$content .= file_get_contents($content_dir . '/' . $entry, false);
+		    		array_push($files, $entry);
 		        }
 		    }
 		    closedir($handle);
 		}
+		sort($files);
+		foreach ($files as $entry) {
+	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
+			$content .= file_get_contents($content_dir . '/' . $entry, false);
+		}
+
 
 		if ($content == '') {
 			// There were no emails
