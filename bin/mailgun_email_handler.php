@@ -13,14 +13,14 @@ $out .= "From: <b>{$from}<b> on {$_POST['Date']}<br>\n";
 $out .= "Subject: <b>{$subject}<b><br>\n";
 $out .= "</p>\n";
 $out .= "<!--BEGIN EMAIL-->\n";
-$out .= $_POST['stripped-html'];
+//$out .= $_POST['stripped-html'];
+$out .= $_POST['body-html'];
 $out .= "\n<!--END EMAIL-->\n";
 
-// Save the email contents in staging	
+// Save the email contents in staging
 
 $filebasename = date('Y-m-d\TH-i-i\Z') . '_' . $_POST['sender'];
 $filename = $config['STAGING_DIR'] . '/'  . $filebasename .'.html';
-file_put_contents($filename, $out);
 
 $log = "";
 
@@ -28,20 +28,26 @@ $log = "";
 $count = 0;
 foreach ($_FILES as $file) {
 	$count++;
-	$attachment_filename = $config['STAGING_DIR'] . '/' . $filebasename . '_' . $count . '_' . basename($file['name']);
+
+	$attachment_filename =  $filebasename . '_' . $count . '_' . basename($file['name']);
+    $attachment_filepath = $config['STAGING_DIR'] . '/' . $attachment_filename;
 
 	$log .= "Getting attachment {$count} as {$attachment_filename}.\n";
 	// todo test for jpg or other safe image
 
-	if (move_uploaded_file($file['tmp_name'], $attachment_filename)) {
+	if (move_uploaded_file($file['tmp_name'], $attachment_filepath)) {
 	    $log .= "File is valid, and was successfully uploaded.\n";
+        $out .= "<div><img src='" . $attachment_filename . "'/></div>";
 	} else {
 	    $log .= "Possible file upload attack!\n";
 	}
 }
 
+// Save our HTML
+file_put_contents($filename, $out);
+
 // Log file
-file_put_contents($config['LOG_FILE'], "\n---\n" . $log . "\n\n" . print_r ($_POST, TRUE), FILE_APPEND | LOCK_EX);		
+file_put_contents($config['LOG_FILE'], "\n---\n" . $log . "\n\n" . print_r ($_POST, TRUE), FILE_APPEND | LOCK_EX);
 
 file_put_contents($config['LOG_DIR'] . "/most_recent_post.serialized",serialize($_POST));
 
