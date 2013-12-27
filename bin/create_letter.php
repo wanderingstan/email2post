@@ -117,7 +117,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
 
 	// ---------------------------------------------------------
 
-	$pdf->PrintLetter('../data/staging', true);
+	$pdf->PrintLetter($config['STAGING_DIR'], true);
 
 	if ($pdf->getNumPages() > 8) {
 		throw new tooManyPagesException;
@@ -133,7 +133,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = TRUE) {
 
 	if ($clearStaging) {
 		// Move our completed emails out of staging
-		shell_exec('mv ../data/staging/*.html ../data/completed/');
+		shell_exec('mv ' . $config['STAGING_DIR'] . '/*.html ../data/completed/');
 	}		
 
 	return 1;

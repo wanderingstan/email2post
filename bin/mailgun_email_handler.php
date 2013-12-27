@@ -40,6 +40,6 @@ foreach ($_FILES as $file) {
 // Log file
 file_put_contents($config['LOG_FILE'], "\n---\n" . $log . "\n\n" . print_r ($_POST, TRUE), FILE_APPEND | LOCK_EX);		
 
-file_put_contents("most_recent.serialized",serialize($_POST));
+file_put_contents($config['LOG_DIR'] . "/most_recent_post.serialized",serialize($_POST));
 
 ?>
