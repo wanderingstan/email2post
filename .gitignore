@@ -1,3 +1,4 @@
 data/*
 logs*
 config.php
+*error_log

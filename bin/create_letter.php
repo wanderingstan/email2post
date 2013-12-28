@@ -2,6 +2,7 @@
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
 require_once "../config.php";
+include_once "setup.php"
 
 class noEmailsStagedException extends Exception
 {
@@ -115,7 +116,7 @@ class MC_TCPDF extends TCPDF {
                 $content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
             }
             elseif (pathinfo($entry, PATHINFO_EXTENSION) == "jpg") {
-                $content .= $this->includeImage($content_dir . '/' . $entry, $isHTML);
+                // $content .= $this->includeImage($content_dir . '/' . $entry, $isHTML);
             }
 		}
 
@@ -203,7 +204,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = FALSE) {
 
 	if ($clearStaging) {
 		// Move our completed emails out of staging
-		shell_exec('mv ' . $config['STAGING_DIR'] . '/*.html ../data/completed/');
+		shell_exec('mv ' . $config['STAGING_DIR'] . '/* ../data/completed/');
 	}
 
 	return 1;
