@@ -37,6 +37,10 @@ class MC_TCPDF extends TCPDF {
      */
     public function messageFromSerialized($serializedFilename, $isHTML) {
         $postData = unserialize(file_get_contents($serializedFilename));
+        if (!$postData['From']) {
+            // empty email. skip it
+            return "";
+        }
         if ($isHTML) {
             $from = htmlentities($postData['From']);
             $subject = htmlentities($postData['Subject']);
@@ -56,12 +60,22 @@ class MC_TCPDF extends TCPDF {
             $out .= "From: {$postData['From']}\n";
             $out .= "Date: {$postData['Date']}\n";
             $out .= "Subject: {$postData['Subject']}\n";
+            $out .= "\n";
             $body = preg_replace('/\r\n/',"\n", $postData['body-plain']);
             $body = preg_replace('/([^\n])\n([^\n])/s','\1 \2', $body);
             $out .= $body;
-            $out .= "\n-------------------------------------------------\n";
+            $out .= "\n-----------------------------------------------------------------------\n";
         }
         return $out;
+    }
+
+    public function messageFromSerialized($serializedFilename, $isHTML) {
+    	if ($isHTML) {
+	    	$imageSize = getimagesize($content_dir . '/' . $entry);
+	    	$width = $imageSize[0];
+	    	$height = $imageSize[1];
+	    	$out = "<p><img style='width:{$width};height:{$height};' src='{$serializedFilename}'></p>"
+	    }
     }
 
 	/**
@@ -75,14 +89,19 @@ class MC_TCPDF extends TCPDF {
 
 		// get all emails
 		$content='';
+		$files= array();
 		if ($handle = opendir($content_dir)) {
 		    $extension = '.serialized';
 		    while (false !== ($entry = readdir($handle))) {
-		    	if (substr($entry, -strlen($extension)) === $extension) {
+		        print pathinfo($entry, PATHINFO_EXTENSION);
+		    	if (pathinfo($entry, PATHINFO_EXTENSION) == "serialized") {
 		            echo "Included file: " . $entry . "\n";
-					//$content .= file_get_contents($content_dir . '/' . $entry, false);
-					$content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
+					array_push($files,$entry);
 		        }
+		    	if (pathinfo($entry, PATHINFO_EXTENSION) == "jpg") {
+		            echo "Included image file: " . $entry . "\n";
+					array_push($files,$entry);
+		    	}
 		        else {
 		            echo "Skipping file: " . $entry . "\n";
 		        }
@@ -92,10 +111,16 @@ class MC_TCPDF extends TCPDF {
 		sort($files);
 		foreach ($files as $entry) {
 	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
-			$content .= file_get_contents($content_dir . '/' . $entry, false);
+            if (pathinfo($entry, PATHINFO_EXTENSION) == "serialized") {
+                $content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
+            }
+            elseif (pathinfo($entry, PATHINFO_EXTENSION) == "jpg") {
+                $content .= $this->includeImage($content_dir . '/' . $entry, $isHTML);
+            }
 		}
 
-		if (count($files) == 0) {
+		if ((count($files) == 0) || ($content == "")) {
+		    print (count($files) . " files found\n");
 			// There were no emails
 			throw new noEmailsStagedException;
 		}
