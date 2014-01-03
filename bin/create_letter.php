@@ -127,7 +127,7 @@ class MC_TCPDF extends TCPDF {
 		            echo "Included file: " . $entry . "\n";
 					array_push($files,$entry);
 		        }
-		    	if (pathinfo($entry, PATHINFO_EXTENSION) == "jpg") {
+		    	if ((pathinfo($entry, PATHINFO_EXTENSION) == "jpg") || ((pathinfo($entry, PATHINFO_EXTENSION) == "jpeg"))) {
 		            echo "Included image file: " . $entry . "\n";
 					array_push($files,$entry);
 		    	}
