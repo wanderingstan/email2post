@@ -1,8 +1,9 @@
 <?php
+
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
 require_once "../config.php";
-include_once "setup.php"
+include_once "setup.php";
 
 class noEmailsStagedException extends Exception
 {
@@ -22,7 +23,7 @@ class MC_TCPDF extends TCPDF {
 	 * @param $isHTML (boolean) if true the chapter body is in HTML, otherwise in simple text.
 	 * @public
 	 */
-	public function PrintLetter($content_dir, $isHTML=true) {
+	public function PrintLetter($content_dir) {
 		// add a new page
 		$this->AddPage();
 		// disable existing columns
@@ -30,7 +31,7 @@ class MC_TCPDF extends TCPDF {
 		// set columns
 		$this->setEqualColumns(2, 90);
 		// print body
-		return $this->LetterBody($content_dir, $isHTML);
+		return $this->LetterBody($content_dir);
 	}
 
     /**
@@ -70,13 +71,42 @@ class MC_TCPDF extends TCPDF {
         return $out;
     }
 
-    public function messageFromSerialized($serializedFilename, $isHTML) {
-    	if ($isHTML) {
-	    	$imageSize = getimagesize($content_dir . '/' . $entry);
-	    	$width = $imageSize[0];
-	    	$height = $imageSize[1];
-	    	$out = "<p><img style='width:{$width};height:{$height};' src='{$serializedFilename}'></p>"
-	    }
+    public function plainHTMLmessageFromSerialized($serializedFilename) {
+        $postData = unserialize(file_get_contents($serializedFilename));
+        if (!$postData['From']) {
+            // empty email. skip it
+            return "";
+        }
+
+        $from = htmlentities($postData['From']);
+        $subject = htmlentities($postData['Subject']);
+
+        $out .= "<hr><p>\n";
+        $out .= "From: <b>{$from}</b><br>\n";
+        $out .= "Date: <b>{$postData['Date']}</b><br>\n";
+        // $out .= "To: <b>{$postData['To']}</b><br>\n";
+        $out .= "Subject: <b>{$subject}</b>\n";
+        $out .= "</p>\n";
+        $out .= "<!--BEGIN EMAIL-->\n";
+        $body = preg_replace('/\r\n/',"\n", $postData['body-plain']);
+        $body = preg_replace('/([^\n])\n([^\n])/s','\1 \2', $body);
+        $body = preg_replace('/\n\n/s',"\n<br><br>\n", $body);
+        $out .= $body;
+        $out .= "<p></p>\n<!--END EMAIL-->\n";
+        return $out;
+//     	if ($isHTML) {
+// 	    }
+    }
+
+    public function includeImage($fileName, $entry) {
+        $imageSize = getimagesize($fileName);
+        $width = $imageSize[0];
+        $height = $imageSize[1];
+        // style='width:{$width};height:{$height};'
+        $out = "<p><img src='../data/staging/bob.jpg'></p>{$entry}<br>";
+        $out = "<p><img src='bob.jpg'></p>bob.jpg plain<br>";
+        $out = "<p><img src='../data/staging/bob.jpg'></p>../data/staging/bob.jpg<br>";
+        return $out;
     }
 
 	/**
@@ -85,7 +115,7 @@ class MC_TCPDF extends TCPDF {
 	 * @param $mode (boolean) if true the chapter body is in HTML, otherwise in simple text.
 	 * @public
 	 */
-	public function LetterBody($content_dir, $isHTML=false) {
+	public function LetterBody($content_dir) {
 		$this->selectColumn();
 
 		// get all emails
@@ -113,10 +143,11 @@ class MC_TCPDF extends TCPDF {
 		foreach ($files as $entry) {
 	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
             if (pathinfo($entry, PATHINFO_EXTENSION) == "serialized") {
-                $content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
+                //$content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
+                $content .= $this->plainHTMLmessageFromSerialized($content_dir . '/' . $entry);
             }
             elseif (pathinfo($entry, PATHINFO_EXTENSION) == "jpg") {
-                // $content .= $this->includeImage($content_dir . '/' . $entry, $isHTML);
+                $content .= $this->includeImage($content_dir . '/' . $entry, $entry);
             }
 		}
 
@@ -129,14 +160,13 @@ class MC_TCPDF extends TCPDF {
 		// set font
 		$this->SetFont('times', '', 9);
 		$this->SetTextColor(50, 50, 50);
-		// print content
-		if ($isHTML) {
-			// ------ HTML MODE ------
-			$this->writeHTML($content, true, false, true, false, 'J');
-		} else {
-			// ------ TEXT MODE ------
-			$this->Write(0, $content, '', 0, 'J', true, 0, false, true, 0);
-		}
+
+        // ------ HTML MODE ------
+        $this->writeHTML($content, true, false, true, false, 'J');
+
+        //------ TEXT MODE ------
+        //$this->Write(0, $content, '', 0, 'J', true, 0, false, true, 0);
+
 		$this->Ln();
 
 		return TRUE;
@@ -188,7 +218,7 @@ function create_letter_from_emails($pdfFile, $clearStaging = FALSE) {
 
 	// ---------------------------------------------------------
 
-	$pdf->PrintLetter($config['STAGING_DIR'], false);
+	$pdf->PrintLetter($config['STAGING_DIR']);
 
 //	if ($pdf->getNumPages() > 8) {
 //		throw new tooManyPagesException;

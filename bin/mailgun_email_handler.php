@@ -2,7 +2,7 @@
 // CGI handler that is called by mailgun when a new email is received
 require_once "../config.php";
 require_once "create_letter.php";
-include_once "setup.php"
+include_once "setup.php";
 
 $mailbox = $_GET['mailbox'];
 
@@ -37,5 +37,12 @@ file_put_contents($config['LOG_FILE'], "\n---\n" . $log . "\n\n" . print_r ($_PO
 
 // Create latest rev of pdf
 create_letter_from_emails($config['STAGING_DIR'] . '/' . 'latest.pdf', FALSE);
+
+// Email notification to stan
+$headers = 'From: stan@wanderingstan.com' . "\r\n" .
+    'Reply-To: stan@wanderingstan.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+mail('stan@wanderingstan.com', 'New content added to ' . $_GET['mailbox'] . ' mailbox', 'Latest PDF visible at ' . $config['BASE_URL'] . '/data/staging/latest.pdf' . "\n" . $count . " files were attached.\n", $headers);
+
 
 ?>
