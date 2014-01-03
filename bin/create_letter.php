@@ -99,13 +99,11 @@ class MC_TCPDF extends TCPDF {
     }
 
     public function includeImage($fileName, $entry) {
-        $imageSize = getimagesize($fileName);
-        $width = $imageSize[0];
-        $height = $imageSize[1];
+        // $imageSize = getimagesize($fileName);
+        // $width = $imageSize[0];
+        // $height = $imageSize[1];
         // style='width:{$width};height:{$height};'
-        $out = "<p><img src='../data/staging/bob.jpg'></p>{$entry}<br>";
-        $out = "<p><img src='bob.jpg'></p>bob.jpg plain<br>";
-        $out = "<p><img src='../data/staging/bob.jpg'></p>../data/staging/bob.jpg<br>";
+        $out .= '<img src="../data/staging/'.$entry.'">Filename: '.$entry.'<br>';
         return $out;
     }
 
