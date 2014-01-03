@@ -122,30 +122,27 @@ class MC_TCPDF extends TCPDF {
 		if ($handle = opendir($content_dir)) {
 		    $extension = '.serialized';
 		    while (false !== ($entry = readdir($handle))) {
-		        print pathinfo($entry, PATHINFO_EXTENSION);
 		    	if (pathinfo($entry, PATHINFO_EXTENSION) == "serialized") {
-		            echo "Included file: " . $entry . "\n";
+		            echo "+Included file: " . $entry . "\n";
 					array_push($files,$entry);
 		        }
-		    	if ((pathinfo($entry, PATHINFO_EXTENSION) == "jpg") || ((pathinfo($entry, PATHINFO_EXTENSION) == "jpeg"))) {
-		            echo "Included image file: " . $entry . "\n";
+		    	elseif (exif_imagetype($content_dir . '/' . $entry)==IMAGETYPE_JPEG) {
+		            echo "+Included image file: " . $entry . "\n";
 					array_push($files,$entry);
 		    	}
 		        else {
-		            echo "Skipping file: " . $entry . "\n";
+		            echo "-Skipping file: " . $entry . "\n";
 		        }
 		    }
 		    closedir($handle);
 		}
 		sort($files);
 		foreach ($files as $entry) {
-	        echo "Included file: " . $content_dir . '/' . $entry . "\n";
             if (pathinfo($entry, PATHINFO_EXTENSION) == "serialized") {
                 //$content .= $this->messageFromSerialized($content_dir . '/' . $entry, $isHTML);
                 $content .= $this->plainHTMLmessageFromSerialized($content_dir . '/' . $entry);
             }
-            elseif ((pathinfo($entry, PATHINFO_EXTENSION) == "jpg") || (pathinfo($entry, PATHINFO_EXTENSION) == "jpeg")){
-            	echo "Added image " . $entry . "\n";
+            elseif (exif_imagetype($content_dir . '/' . $entry)==IMAGETYPE_JPEG) {
                 $content .= $this->includeImage($content_dir . '/' . $entry, $entry);
             }
 		}
