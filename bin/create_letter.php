@@ -145,6 +145,7 @@ class MC_TCPDF extends TCPDF {
                 $content .= $this->plainHTMLmessageFromSerialized($content_dir . '/' . $entry);
             }
             elseif ((pathinfo($entry, PATHINFO_EXTENSION) == "jpg") || (pathinfo($entry, PATHINFO_EXTENSION) == "jpeg")){
+            	echo "Added image " . $entry . "\n";
                 $content .= $this->includeImage($content_dir . '/' . $entry, $entry);
             }
 		}
