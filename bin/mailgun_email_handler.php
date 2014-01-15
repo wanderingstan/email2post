@@ -27,7 +27,8 @@ foreach ($_FILES as $file) {
 	if (move_uploaded_file($file['tmp_name'], $attachment_filepath)) {
 	    $log .= "File is valid, and was successfully uploaded.\n";
         //$out .= "<div><img src='" . $attachment_filename . "'/></div>";
-	} else {
+	}
+	else {
 	    $log .= "Possible file upload attack!\n";
 	}
 }
@@ -42,8 +43,15 @@ create_letter_from_emails($config['STAGING_DIR'] . '/' . 'latest.pdf', FALSE);
 $headers = 'From: stan@wanderingstan.com' . "\r\n" .
     'Reply-To: stan@wanderingstan.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
-$content = 'Latest PDF visible at ' . $config['BASE_URL'] . '/data/staging/latest.pdf' . "\n" . $count . " files were attached.\n";
-mail('stan@wanderingstan.com', 'New content added to ' . $_GET['mailbox'] . ' mailbox at ' .$_SERVER["SERVER_NAME"] .' with URI '.$_SERVER["REQUEST_URI"] , $content, $headers);
 
+$subject = 'Email2post content to ' . $_GET['mailbox'] . ' mailbox  from '. $_POST['sender'] ;
+$content  = count( explode(PHP_EOL, $_POST['body-plain']) ) . " lines were received from " . $_POST['sender'] . "\n\n";
+if ($count>0) {
+    $content .= $count . " files were attached.\n\n";
+}
+$content .= 'Latest PDF visible at ' . $config['BASE_URL'] . '/data/staging/latest.pdf' . "\n\n";
+$content .= 'Received at ' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"] ."\n\n";
+
+mail('stan@wanderingstan.com', $subject , $content, $headers);
 
 ?>
