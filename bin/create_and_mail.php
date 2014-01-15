@@ -4,7 +4,6 @@
 require_once "../config.php";
 require_once "create_letter.php";
 require_once "lob_mail_letter.php";
-include_once "setup.php"
 
 $jobName = date('Y-m-d\TH-i-i\Z') . "_Pete_Live";
 $pdfFile = "../data/letters/letter_" . $jobName . ".pdf";
