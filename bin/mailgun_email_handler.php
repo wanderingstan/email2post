@@ -42,7 +42,8 @@ create_letter_from_emails($config['STAGING_DIR'] . '/' . 'latest.pdf', FALSE);
 $headers = 'From: stan@wanderingstan.com' . "\r\n" .
     'Reply-To: stan@wanderingstan.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
-mail('stan@wanderingstan.com', 'New content added to ' . $_GET['mailbox'] . ' mailbox', 'Latest PDF visible at ' . $config['BASE_URL'] . '/data/staging/latest.pdf' . "\n" . $count . " files were attached.\n", $headers);
+$content = 'Latest PDF visible at ' . $config['BASE_URL'] . '/data/staging/latest.pdf' . "\n" . $count . " files were attached.\n";
+mail('stan@wanderingstan.com', 'New content added to ' . $_GET['mailbox'] . ' mailbox at ' .$_SERVER["SERVER_NAME"] .' with URI '.$_SERVER["REQUEST_URI"] , $content, $headers);
 
 
 ?>
