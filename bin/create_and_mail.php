@@ -16,7 +16,14 @@ try {
 
 	// Mail the letter!
 	$lob = new lob_mail_letter($pdfFile, $jobName);
-	$lob->mail_letter();
+	$lob_result_json = $lob->mail_letter();
+
+    // TODO: Test for error condition here
+    print_r($lob_result_json);
+
+	//  Move our data to completed
+	$achive_cmd = "mv '" . $config['STAGING_DIR'] . "/*' '" . $config['COMPLETED_DIR'] . "' /";
+	$result = `$archive_cmd`;
 }
 catch (noEmailsStagedException $e) {
 	print "No emails are staged to be printed. Nothing to do.\n";

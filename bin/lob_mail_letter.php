@@ -61,7 +61,7 @@ EOF;
 		$lob_job_json = `$create_lob_job_cmd`;
 		$this->lob_job = json_decode($lob_job_json);
 
-		print_r ($this->lob_job);
+		return $this->lob_job;
 
 		// file_put_contents($config['log_file'], print_r ($this->lob_job, TRUE), FILE_APPEND | LOCK_EX);
 	}
