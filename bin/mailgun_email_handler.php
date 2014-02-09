@@ -4,9 +4,20 @@ require_once "../config.php";
 require_once "create_letter.php";
 include_once "setup.php";
 
-$mailbox = $_GET['mailbox'];
+function extract_email($email_string) {
+    preg_match("/<?([^<]+?)@([^>]+?)>?$/", $email_string, $matches);
+    if ($matches && $matches[1] && $matches[2]) {
+        return $matches[1] . "@" . $matches[2];
+    }
+    else {
+        return "";
+    }
+}
 
-$filebasename = date('Y-m-d\TH-i-i\Z') . '_' . $_POST['sender'];
+$true_sender_email = extract_email($_POST['from']);
+
+$mailbox = $_GET['mailbox'];
+$filebasename = date('Y-m-d\TH-i-i\Z') . '_' . $true_sender_email;
 $serialized_filename = $config['STAGING_DIR'] . '/'  . $filebasename .'.serialized';
 $log = "";
 
@@ -26,7 +37,6 @@ foreach ($_FILES as $file) {
 
 	if (move_uploaded_file($file['tmp_name'], $attachment_filepath)) {
 	    $log .= "File is valid, and was successfully uploaded.\n";
-        //$out .= "<div><img src='" . $attachment_filename . "'/></div>";
 	}
 	else {
 	    $log .= "Possible file upload attack!\n";
@@ -44,8 +54,8 @@ $headers = 'From: stan@wanderingstan.com' . "\r\n" .
     'Reply-To: stan@wanderingstan.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-$subject = 'Email2post content to ' . $_GET['mailbox'] . ' mailbox  from '. $_POST['sender'] ;
-$content  = count( explode(PHP_EOL, $_POST['body-plain']) ) . " lines were received from " . $_POST['sender'] . "\n\n";
+$subject = 'Email2post content to ' . $_GET['mailbox'] . ' mailbox  from '. $_POST['from'] ;
+$content  = count( explode(PHP_EOL, $_POST['body-plain']) ) . " lines were received from " . $_POST['from'] . "\n\n";
 if ($count>0) {
     $content .= $count . " files were attached.\n\n";
 }
